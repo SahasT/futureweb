@@ -441,7 +441,7 @@ document.addEventListener('DOMContentLoaded', function() {
     revealElements.forEach(el => revealObserver.observe(el));
     
     // Console welcome message
-    console.log('%c🌟 Welcome to Recrafted Futures! 🌟', 'color: #2c5aa0; font-size: 16px; font-weight: bold;');
+    console.log('%c Welcome to Recrafted Futures! ', 'color: #2c5aa0; font-size: 16px; font-weight: bold;');
     console.log('%cBuilding tomorrow together through sustainable community development.', 'color: #28a745; font-size: 12px;');
 });
 
@@ -465,3 +465,50 @@ window.RecraftedFutures = {
         // Made available globally for external scripts
     }
 };
+// ===== PAYPAL DONATION LOGIC =====
+let selectedAmount = 25;
+
+document.querySelectorAll('.amount-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedAmount = btn.dataset.amount;
+        document.getElementById('custom-amount').value = '';
+    });
+});
+
+paypal.Buttons({
+    style: {
+        layout: 'vertical',
+        color: 'gold',
+        shape: 'rect',
+        label: 'donate'
+    },
+
+    createOrder: function (data, actions) {
+        const customAmount = document.getElementById('custom-amount').value;
+        const amount = customAmount && customAmount > 0 ? customAmount : selectedAmount;
+
+        return actions.order.create({
+            purchase_units: [{
+                amount: { value: amount },
+                description: "Donation to Recrafted Futures"
+            }]
+        });
+    },
+
+    onApprove: function (data, actions) {
+        return actions.order.capture().then(function (details) {
+            alert(
+                "Thank you " +
+                details.payer.name.given_name +
+                "! Your donation was successful."
+            );
+        });
+    },
+
+    onError: function (err) {
+        console.error(err);
+        alert("Payment error. Please try again.");
+    }
+}).render('#paypal-button-container');
