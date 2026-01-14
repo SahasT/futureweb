@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=PASTE_YOUR_PAYPAL_CLIENT_ID_HERE&currency=USD"></script>
 </head>
 <body>
 
@@ -190,9 +191,12 @@
                             <button type="button" class="amount-btn" data-amount="250">$250</button>
                         </div>
                         <div class="form-group">
-                            <label for="custom-amount">Custom Amount</label>
-                            <input type="number" id="custom-amount" name="amount" placeholder="Enter amount" min="1">
+                        <label for="custom-amount">Custom Amount</label>
+                        <input type="number" id="custom-amount" name="amount" placeholder="Enter amount" min="1">
                         </div>
+
+                        <div id="paypal-button-container"></div>
+
                         <div class="form-group">
                             <label for="donor-name">Name</label>
                             <input type="text" id="donor-name" name="name" required>
