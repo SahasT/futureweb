@@ -1379,3 +1379,41 @@ textarea:focus,
         padding: 1rem 0;
     }
 }
+/* ===== DONATION BUTTON COLORS (MATCH SITE) ===== */
+
+/* Donation amount buttons */
+.amount-btn {
+    background-color: #3F6DB3;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.amount-btn:hover {
+    background-color: #365F9D;
+    transform: translateY(-1px);
+}
+
+.amount-btn.active {
+    background-color: #2F5590;
+    color: #FFFFFF;
+}
+
+/* PayPal button spacing */
+#paypal-button-container {
+    margin-top: 20px;
+}
+
+/* Optional: match form button if still visible */
+.btn-primary {
+    background-color: #3F6DB3;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #365F9D;
+}
