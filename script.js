@@ -512,3 +512,10 @@ paypal.Buttons({
         alert("Payment error. Please try again.");
     }
 }).render('#paypal-button-container');
+style: {
+    layout: 'vertical',
+    color: 'blue',
+    shape: 'rect',
+    label: 'donate'
+},
+
